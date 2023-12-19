@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-8">
+
+    <form method="post" action="/" class="max-w-md mx-auto bg-white p-8 border shadow-md">
+        <h2 class="text-2xl font-bold mb-4">User Form</h2>
+
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-600">Name:</label>
+            <div class="flex items-center">
+                <input type="text" name="name" required class="border rounded py-2 px-4 w-full">
+                <button type="button" onclick="clearField('name')" class="ml-2 px-4 py-2 bg-red-500 text-white rounded">Remove</button>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="sex" class="block text-sm font-medium text-gray-600">Sex:</label>
+            <div class="flex items-center">
+                <input type="text" name="sex" required class="border rounded py-2 px-4 w-full">
+                <button type="button" onclick="clearField('sex')" class="ml-2 px-4 py-2 bg-red-500 text-white rounded">Remove</button>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="age" class="block text-sm font-medium text-gray-600">Age:</label>
+            <div class="flex items-center">
+                <input type="text" name="age" required class="border rounded py-2 px-4 w-full">
+                <button type="button" onclick="clearField('age')" class="ml-2 px-4 py-2 bg-red-500 text-white rounded">Remove</button>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="email" class="block text-sm font-medium text-gray-600">Email:</label>
+            <div class="flex items-center">
+                <input type="email" name="email" required class="border rounded py-2 px-4 w-full">
+                <button type="button" onclick="clearField('email')" class="ml-2 px-4 py-2 bg-red-500 text-white rounded">Remove</button>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="address" class="block text-sm font-medium text-gray-600">Address:</label>
+            <div class="flex items-center">
+                <input type="text" name="address" required class="border rounded py-2 px-4 w-full">
+                <button type="button" onclick="clearField('address')" class="ml-2 px-4 py-2 bg-red-500 text-white rounded">Remove</button>
+            </div>
+        </div>
+
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Submit</button>
+    </form>
+
+    <script>
+        function clearField(fieldName) {
+            document.querySelector(`[name="${fieldName}"]`).value = '';
+        }
+    </script>
+
+</body>
+</html>
