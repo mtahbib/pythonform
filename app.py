@@ -1,19 +1,29 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+import mysql.connector
 
 app = Flask(__name__)
+
+# Configure MySQL connection
+db = mysql.connector.connect(
+    host='localhost',
+    user='flask_user',
+    password='your_password',
+    database='flask_app'
+)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        user_data = {
-            'name': request.form.get('name'),
-            'sex': request.form.get('sex'),
-            'age': request.form.get('age'),
-            'email': request.form.get('email'),
-            'address': request.form.get('address'),
-        }
-        # Process or store user_data as needed (e.g., save to a database)
-        print('User Data:', user_data)
+        cursor = db.cursor(dictionary=True)
+        user_data = request.json.get('users', [])
+
+        for data in user_data:
+            query = "INSERT INTO users (name, sex, age, email, address) VALUES (%s, %s, %s, %s, %s)"
+            values = (data['name'], data['sex'], data['age'], data['email'], data['address'])
+            cursor.execute(query, values)
+            db.commit()
+
+        return jsonify({'message': 'Form submitted successfully'})
 
     return render_template('index.html')
 
