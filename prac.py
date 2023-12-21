@@ -25,7 +25,8 @@ if "best" in txt:
  #slicing 
 a=" My Name is Flash"
 #print(a[:4])
+b=5.625
 print(a.upper())
 print(a.lower())
 print(a.strip())
- 
+print(round(b,2))
